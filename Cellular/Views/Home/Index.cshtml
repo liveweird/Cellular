@@ -1,3 +1,77 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<br/>
+<button id="makeChange">Make change!</button>
+<br/>
+<table id="cells" class="table table-bordered">
+    <thead>
+    <tr>
+        <th>&nbsp;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var cellular = $.connection.cellularHub;
+            cellular.client.addCellChange = function (x, y, value) {
+                console.log("Changing state of " + x + "," + y + " to " + value);
+                var table = $("table#cells tbody")[0];
+                var cell = table.rows[y].cells[x+1];
+                var $cell = $(cell);
+                $cell.css('background-color', 'rgb(' + value + ',' + value + ',' + value + ')');
+            };
+            $.connection.hub.start().done(function () {
+                $('#makeChange').click(function () {
+                    cellular.server.makeChange();
+                });
+            });
+        });
+    </script>
+}
