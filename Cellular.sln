@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cellular", "Cellular\Cellular.csproj", "{CC9202D2-03DF-438F-8B3D-861939E352F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cellular.Tests", "Cellular.Tests\Cellular.Tests.csproj", "{9C133F43-A3B8-4040-A4B8-CD618738FFDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC9202D2-03DF-438F-8B3D-861939E352F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9202D2-03DF-438F-8B3D-861939E352F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9202D2-03DF-438F-8B3D-861939E352F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9202D2-03DF-438F-8B3D-861939E352F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C133F43-A3B8-4040-A4B8-CD618738FFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C133F43-A3B8-4040-A4B8-CD618738FFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C133F43-A3B8-4040-A4B8-CD618738FFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C133F43-A3B8-4040-A4B8-CD618738FFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
