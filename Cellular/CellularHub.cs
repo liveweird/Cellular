@@ -1,4 +1,6 @@
 ﻿using System;
+using Akka.Actor;
+using Cellular.Actors;
 using Microsoft.AspNet.SignalR;
 
 namespace Cellular
@@ -8,7 +10,7 @@ namespace Cellular
         public void MakeChange()
         {
             var random = new Random((int) DateTime.Now.Ticks);
-            Clients.All.addCellChange(random.Next(5), random.Next(5), random.Next(256));
+            MvcApplication.Ecosystem.Tell(new MakeChangeInCellMessage {DimX = random.Next(5), DimY = random.Next(5)});
         }
     }
 }

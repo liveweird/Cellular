@@ -1,5 +1,4 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
 namespace Cellular
 {
