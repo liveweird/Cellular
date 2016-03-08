@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 <br/>
-<button id="makeChange">Make change!</button>
+<button id="randomWakeUp">Random!</button>
 <br/>
 @{
     var size = 10;
@@ -37,6 +37,9 @@
     <script>
         $(function () {
             var cellular = $.connection.cellularHub;
+            var wakeMeUp = function(x, y) {
+                cellular.server.wakeMeUp(x, y);
+            };
             cellular.client.addCellChange = function (x, y, value) {
                 console.log("Changing state of " + x + "," + y + " to " + value);
                 var table = $("table#cells tbody")[0];
@@ -45,9 +48,19 @@
                 $cell.css('background-color', 'rgb(' + value + ',' + value + ',' + value + ')');
             };
             $.connection.hub.start().done(function () {
-                $('#makeChange').click(function () {
-                    cellular.server.makeChange();
+                $('#randomWakeUp').click(function () {
+                    cellular.server.randomWakeUp();
                 });
+                /*
+                var rows = $("table#cells tbody tr");
+                rows.each(function (y) {
+                    var items = rows.children("td");
+                    items.each(function (x) {
+                        console.log("Click! " + x + ";" + y);
+                        $(this).click(wakeMeUp(x,y));
+                    });                    
+                });
+                */
             });
         });
     </script>
