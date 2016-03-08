@@ -22,8 +22,8 @@ namespace Cellular
             System = ActorSystem.Create("cellular");
             Ecosystem = System.ActorOf<EcosystemActor>("ecosystem");
 
-            System.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(0),
-                                                    TimeSpan.FromSeconds(3),
+            System.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(1),
+                                                    TimeSpan.FromSeconds(1),
                                                     Ecosystem,
                                                     new RefreshWorldMessage(),
                                                     Ecosystem);

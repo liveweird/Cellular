@@ -22,7 +22,7 @@ namespace Cellular.Actors
 
     public class EcosystemActor : ReceiveActor
     {
-        private const int Size = 5;
+        public const int Size = 10;
         private readonly IActorRef[,] _cells = new IActorRef[Size, Size];
         private IHubContext _hub;
 

@@ -4,53 +4,30 @@
 <br/>
 <button id="makeChange">Make change!</button>
 <br/>
+@{
+    var size = 10;
+}
 <table id="cells" class="table table-bordered">
     <thead>
-    <tr>
-        <th>&nbsp;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-    </tr>
-    </thead>
+        <tr>
+            <th>&nbsp;</th>
+            @for (var x = 0; x < size; x++)
+            {
+                <th>@(x+1)</th>
+            }
+        </tr>
+  </thead>
     <tbody>
-    <tr>
-        <th>1</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>2</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>3</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>4</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>5</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
+    @for (var y = 0; y < size; y++)
+    {
+        <tr>
+            <th>@(y+1)</th>
+            @for (var x = 0; x < size; x++)
+            {
+                <td>&nbsp;</td>
+            }
+        </tr>
+    }
     </tbody>
 </table>
 
