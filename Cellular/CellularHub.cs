@@ -10,7 +10,7 @@ namespace Cellular
         public void MakeChange()
         {
             var random = new Random((int) DateTime.Now.Ticks);
-            MvcApplication.Ecosystem.Tell(new MakeChangeInCellMessage {DimX = random.Next(5), DimY = random.Next(5)});
+            MvcApplication.Ecosystem.Tell(new WakeUpCellMessage {DimX = random.Next(5), DimY = random.Next(5)});
         }
     }
 }

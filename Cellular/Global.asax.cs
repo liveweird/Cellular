@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Akka.Actor;
@@ -20,6 +21,12 @@ namespace Cellular
 
             System = ActorSystem.Create("cellular");
             Ecosystem = System.ActorOf<EcosystemActor>("ecosystem");
+
+            System.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(0),
+                                                    TimeSpan.FromSeconds(3),
+                                                    Ecosystem,
+                                                    new RefreshWorldMessage(),
+                                                    Ecosystem);
         }
 
         protected void Application_End()
