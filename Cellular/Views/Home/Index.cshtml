@@ -2,7 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 <br/>
-<button id="randomWakeUp">Random!</button>
+<button id="random3WakeUp">Random 3!</button>
+<button id="random5WakeUp">Random 5!</button>
+<button id="random9WakeUp">Random 9!</button>
 <br/>
 @{
     var size = 10;
@@ -35,32 +37,42 @@
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
-        $(function () {
+        $(function() {
             var cellular = $.connection.cellularHub;
             var wakeMeUp = function(x, y) {
+                console.log("Click! " + x + ";" + y);
                 cellular.server.wakeMeUp(x, y);
             };
-            cellular.client.addCellChange = function (x, y, value) {
-                console.log("Changing state of " + x + "," + y + " to " + value);
+            cellular.client.addCellChange = function(x, y, value) {
                 var table = $("table#cells tbody")[0];
-                var cell = table.rows[y].cells[x+1];
+                var cell = table.rows[y].cells[x + 1];
                 var $cell = $(cell);
                 $cell.css('background-color', 'rgb(' + value + ',' + value + ',' + value + ')');
             };
-            $.connection.hub.start().done(function () {
-                $('#randomWakeUp').click(function () {
-                    cellular.server.randomWakeUp();
+            $.connection.hub.start().done(function() {
+                $('#random3WakeUp').click(function() {
+                    cellular.server.randomWakeUp(3);
                 });
-                /*
+
+                $('#random5WakeUp').click(function () {
+                    cellular.server.randomWakeUp(5);
+                });
+
+                $('#random9WakeUp').click(function () {
+                    cellular.server.randomWakeUp(9);
+                });
+
                 var rows = $("table#cells tbody tr");
-                rows.each(function (y) {
-                    var items = rows.children("td");
-                    items.each(function (x) {
-                        console.log("Click! " + x + ";" + y);
-                        $(this).click(wakeMeUp(x,y));
-                    });                    
+                rows.each(function(y, row) {
+                    var $row = $(row);
+                    var items = $row.children("td");
+                    items.each(function(x) {
+                        console.log("Binding click event: " + x + "," + y);
+                        $(this).click(function() {
+                            wakeMeUp(x, y);
+                        });
+                    });
                 });
-                */
             });
         });
     </script>
